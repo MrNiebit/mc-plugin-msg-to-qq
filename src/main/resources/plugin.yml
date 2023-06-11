@@ -1,0 +1,8 @@
+name: msg-sync-qq
+version: '${project.version}'
+main: cn.lacknb.msgsync.MsgSyncQq
+api-version: '1.20'
+load: STARTUP
+authors: [gitsilence]
+description: sync msg to qq
+website: http://blog.lacknb.cn

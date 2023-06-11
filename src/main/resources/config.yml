@@ -1,0 +1,5 @@
+# my config
+is-open: true
+msg-prefix: "[game-server]-"
+api-url: http://192.168.0.106:8080/bot/msg/send
+request-body: '{"type":0,"id":"951966141","msg":"{msg}"}'
