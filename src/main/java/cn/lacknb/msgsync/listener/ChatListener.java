@@ -11,6 +11,7 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -68,7 +69,7 @@ public class ChatListener implements Listener {
 
     private void sendMessage(String msg) {
         msg = msgPrefix + msg;
-        String replace = requestBody.replace("{msg}", msg);
+        String replace = requestBody.replace("{msg}", URLEncoder.encode(msg));
         try {
             String post = MyHttpClient.post(api, replace);
             log.info(post);
@@ -83,6 +84,7 @@ public class ChatListener implements Listener {
         String playerName = event.getPlayer().getName();
         List<String> playerList = Bukkit.getServer().getOnlinePlayers().stream().map(Player::getName)
                 .collect(Collectors.toList());
+        playerList.remove(playerName);
         String builder = "玩家：" + playerName + " 退出了游戏\n" +
                 "\n当前在线玩家：\n" +
                 String.join("\n ", playerList);
